@@ -50,6 +50,30 @@
         gap: 30px;
     }
 
+    .lang-btn {
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .lang-btn:hover {
+        background: rgba(102, 126, 234, 0.3);
+        border-color: #667eea;
+    }
+
+    .lang-btn:active {
+        transform: scale(0.95);
+    }
+
     .hamburger {
         cursor: pointer;
         display: flex;
@@ -63,37 +87,6 @@
         background: #fff;
         border-radius: 3px;
         transition: all 0.3s;
-    }
-
-    .cart-icon {
-        position: relative;
-        cursor: pointer;
-        font-size: 24px;
-        transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .cart-icon:hover {
-        transform: scale(1.1);
-    }
-
-    .cart-icon:active {
-        transform: scale(0.95);
-    }
-
-    .cart-count {
-        position: absolute;
-        top: -8px;
-        right: -8px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 11px;
-        font-weight: bold;
     }
 
     /* Sidebar Menu */
@@ -279,6 +272,37 @@
         font-size: 80px;
     }
 
+    /* Category Tabs */
+    .category-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+    }
+
+    .tab-btn {
+        padding: 12px 30px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #aaa;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 16px;
+    }
+
+    .tab-btn.active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-color: transparent;
+        color: white;
+    }
+
+    .tab-btn:hover {
+        border-color: #667eea;
+        color: white;
+    }
+
     /* Products Grid */
     .products {
         display: grid;
@@ -343,11 +367,52 @@
         z-index: 1;
     }
 
+    .product-card ul {
+        list-style: none;
+        color: #aaa;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .product-card ul li {
+        padding: 5px 0;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    .product-card ul li:before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: #667eea;
+    }
+
     .price {
         font-size: 32px;
         color: #667eea;
         font-weight: bold;
         margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .price-old {
+        font-size: 18px;
+        color: #777;
+        text-decoration: line-through;
+        margin-left: 10px;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 5px 12px;
+        background: rgba(39, 174, 96, 0.2);
+        border: 1px solid #27ae60;
+        color: #27ae60;
+        border-radius: 15px;
+        font-size: 12px;
+        margin-bottom: 15px;
         position: relative;
         z-index: 1;
     }
@@ -377,129 +442,34 @@
         transition: all 0.1s;
     }
 
-    /* Cart Modal */
-    .cart-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(5px);
-        z-index: 2000;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .cart-content {
-        background: #1a1a1a;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        padding: 40px;
-        max-width: 600px;
-        width: 90%;
-        max-height: 80vh;
-        overflow-y: auto;
-    }
-
-    .cart-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 30px;
-    }
-
-    .cart-header h2 {
-        font-size: 28px;
-        color: #667eea;
-    }
-
-    .close-btn {
-        font-size: 32px;
-        cursor: pointer;
-        color: #aaa;
-        transition: color 0.3s;
-    }
-
-    .close-btn:hover {
-        color: #fff;
-    }
-
-    .cart-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 10px;
-        margin-bottom: 15px;
-    }
-
-    .cart-item-info h4 {
-        margin-bottom: 5px;
-    }
-
-    .cart-item-price {
-        color: #667eea;
-        font-weight: bold;
-    }
-
-    .remove-btn {
-        background: rgba(231, 76, 60, 0.2);
-        border: 1px solid #e74c3c;
-        color: #e74c3c;
-        padding: 8px 16px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .remove-btn:hover {
-        background: #e74c3c;
-        color: white;
-    }
-
-    .remove-btn:active {
-        transform: scale(0.95);
-    }
-
-    .cart-total {
-        margin-top: 30px;
-        padding-top: 20px;
-        border-top: 2px solid rgba(102, 126, 234, 0.3);
-        text-align: right;
-    }
-
-    .cart-total h3 {
-        font-size: 28px;
-        color: #667eea;
-    }
-
-    .cart-actions {
-        margin-top: 20px;
-        display: flex;
-        gap: 15px;
-    }
-
-    .empty-cart {
-        text-align: center;
-        padding: 60px 20px;
-        color: #aaa;
-    }
-
-    .empty-cart-icon {
-        font-size: 64px;
-        margin-bottom: 20px;
-        opacity: 0.5;
-    }
-
     /* Footer */
     footer {
         background: #0a0a0a;
         padding: 40px;
         text-align: center;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #aaa;
+    }
+
+    .terms-box {
+        margin-bottom: 30px;
+        padding: 25px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: 1200px;
+        margin: 0 auto 30px;
+    }
+
+    .terms-box h3 {
+        color: #667eea;
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+
+    .terms-box p {
+        font-size: 14px;
+        line-height: 1.8;
         color: #aaa;
     }
 
@@ -532,6 +502,15 @@
         .products {
             grid-template-columns: 1fr;
         }
+
+        .category-tabs {
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
     }
 </style>
 ```
@@ -542,14 +521,14 @@
     <nav>
         <div class="logo">Pulse | Design & Market</div>
         <div class="nav-right">
+            <button class="lang-btn" onclick="toggleLanguage()">
+                <span id="langIcon">🇬🇧</span>
+                <span id="langText">EN</span>
+            </button>
             <div class="hamburger" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
-            <div class="cart-icon" onclick="toggleCart()">
-                🛒
-                <span class="cart-count" id="cartCount">0</span>
             </div>
         </div>
     </nav>
@@ -570,8 +549,8 @@
 <section class="hero" id="home">
     <div class="hero-content">
         <h1>Прецизност. Качество. Съвършенство.</h1>
-        <p>Открийте професионални дигитални решения, създадени с 99.99% перфектност. От уеб дизайн до маркетинг стратегии - всеки проект е гарантиран за надеждност, консистентност и премиум резултати.</p>
-        <a href="#products" class="cta-button" onclick="navigateTo('products')">Разгледай Услугите</a>
+        <p>Открийте професионални дигитални решения за FiveM сървъри, създадени с 99.99% перфектност. MLO дизайн, ливерита, дрехи - всеки проект е гарантиран за надеждност и премиум резултати.</p>
+        <a href="#products" class="cta-button" onclick="navigateTo('products')">Разгледай Продуктите</a>
     </div>
 </section>
 
@@ -598,162 +577,497 @@
 
 <!-- Products Section -->
 <section class="section" id="products" style="display: none;">
-    <h2 class="section-title">Нашите Услуги</h2>
+    <h2 class="section-title">Нашите Продукти</h2>
+    
+    <div class="category-tabs">
+        <button class="tab-btn active" onclick="filterCategory('all')">Всички</button>
+        <button class="tab-btn" onclick="filterCategory('mlo')">🏢 MLO-та</button>
+        <button class="tab-btn" onclick="filterCategory('vehicles')">🚓 Автомобили</button>
+        <button class="tab-btn" onclick="filterCategory('clothing')">👕 Дрехи</button>
+    </div>
+
     <div class="products" id="productsGrid"></div>
 </section>
-
-<!-- Cart Modal -->
-<div class="cart-modal" id="cartModal">
-    <div class="cart-content">
-        <div class="cart-header">
-            <h2>Количка</h2>
-            <span class="close-btn" onclick="toggleCart()">&times;</span>
-        </div>
-        <div id="cartItems"></div>
-    </div>
-</div>
 
 <!-- Footer -->
 <footer>
     <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
-        <div style="margin-bottom: 30px; padding: 25px; background: rgba(255,255,255,0.05); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
-            <h3 style="color: #667eea; margin-bottom: 15px; font-size: 18px;">⚖️ Terms & Conditions</h3>
-            <p style="font-size: 14px; line-height: 1.8; color: #aaa;">
+        <div class="terms-box">
+            <h3>⚖️ Terms & Conditions</h3>
+            <p>
                 All payments made to Pulse | Design & Market are final and non-refundable. The company reserves all rights over its services and products. Pulse | Design & Market cannot be held legally liable for any claims, damages, or losses related to the use of its products or services. By placing an order, the client fully agrees to these terms and conditions.
             </p>
         </div>
-        <p style="color: #aaa;">📧 Contact: <a href="mailto:pulsedesignsbg@gmail.com" style="color: #667eea; text-decoration: none;">pulsedesignsbg@gmail.com</a></p>
+        <div style="margin-bottom: 20px;">
+            <p style="font-size: 16px; margin-bottom: 10px;">💬 Join our Discord for support & product delivery:</p>
+            <a href="https://discord.gg/wsru7jEr7F" target="_blank" style="display: inline-block; padding: 12px 30px; background: #5865F2; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.2s;">
+                <span style="font-size: 20px; margin-right: 8px;">💬</span> Join Discord Server
+            </a>
+        </div>
+        <p>📧 Contact: <a href="mailto:pulsedesignsbg@gmail.com" style="color: #667eea; text-decoration: none;">pulsedesignsbg@gmail.com</a></p>
         <p style="margin-top: 15px;">&copy; 2026 Pulse | Design & Market. All rights reserved.</p>
     </div>
 </footer>
 
 <script>
-    const services = [
+    let currentLanguage = 'bg'; // Default Bulgarian
+
+    const translations = {
+        bg: {
+            menuHome: '🏠 Начало',
+            menuAbout: 'ℹ️ За нас',
+            menuProducts: '🛍️ Продукти',
+            menuContact: '📧 Контакти',
+            heroTitle: 'Прецизност. Качество. Съвършенство.',
+            heroDesc: 'Открийте професионални дигитални решения за FiveM сървъри, създадени с 99.99% перфектност. MLO дизайн, ливерита, дрехи - всеки проект е гарантиран за надеждност и премиум резултати.',
+            heroBtn: 'Разгледай Продуктите',
+            aboutTitle: 'За Нас',
+            aboutWho: 'Кои сме ние?',
+            aboutDesc1: 'Pulse | Design & Market is a symbol of precision, trust, and uncompromising quality. Every product we create is developed with extreme attention to detail and guaranteed 99.99% perfection. From concept to final delivery, our work follows the highest professional standards, ensuring reliability, consistency, and premium results.',
+            aboutDesc2: 'All Pulse | Design & Market products are created, tested, and verified by our professional team. Combining experience, creativity, and strict quality control, we deliver solutions that set standards, build confidence, and exceed expectations.',
+            aboutWhy: 'Защо да изберете нас?',
+            aboutPoint1: '99.99% гарантирано съвършенство',
+            aboutPoint2: 'Професионално качество на световно ниво',
+            aboutPoint3: 'Строг контрол на качеството',
+            aboutPoint4: 'Прецизност и надеждност',
+            aboutPoint5: 'Премиум резултати',
+            productsTitle: 'Нашите Продукти',
+            tabAll: 'Всички',
+            tabMLO: '🏢 MLO-та',
+            tabVehicles: '🚓 Автомобили',
+            tabClothing: '👕 Дрехи',
+            buyBtn: 'Купи сега',
+            termsTitle: '⚖️ Terms & Conditions',
+            termsText: 'All payments made to Pulse | Design & Market are final and non-refundable. The company reserves all rights over its services and products. Pulse | Design & Market cannot be held legally liable for any claims, damages, or losses related to the use of its products or services. By placing an order, the client fully agrees to these terms and conditions.',
+            discordText: '💬 Join our Discord for support & product delivery:',
+            discordBtn: 'Join Discord Server',
+            contact: '📧 Contact:',
+            copyright: '© 2026 Pulse | Design & Market. All rights reserved.'
+        },
+        en: {
+            menuHome: '🏠 Home',
+            menuAbout: 'ℹ️ About Us',
+            menuProducts: '🛍️ Products',
+            menuContact: '📧 Contact',
+            heroTitle: 'Precision. Quality. Perfection.',
+            heroDesc: 'Discover professional digital solutions for FiveM servers, created with 99.99% perfection. MLO design, liveries, clothing - every project is guaranteed for reliability and premium results.',
+            heroBtn: 'View Products',
+            aboutTitle: 'About Us',
+            aboutWho: 'Who are we?',
+            aboutDesc1: 'Pulse | Design & Market is a symbol of precision, trust, and uncompromising quality. Every product we create is developed with extreme attention to detail and guaranteed 99.99% perfection. From concept to final delivery, our work follows the highest professional standards, ensuring reliability, consistency, and premium results.',
+            aboutDesc2: 'All Pulse | Design & Market products are created, tested, and verified by our professional team. Combining experience, creativity, and strict quality control, we deliver solutions that set standards, build confidence, and exceed expectations.',
+            aboutWhy: 'Why choose us?',
+            aboutPoint1: '99.99% guaranteed perfection',
+            aboutPoint2: 'World-class professional quality',
+            aboutPoint3: 'Strict quality control',
+            aboutPoint4: 'Precision and reliability',
+            aboutPoint5: 'Premium results',
+            productsTitle: 'Our Products',
+            tabAll: 'All',
+            tabMLO: '🏢 MLOs',
+            tabVehicles: '🚓 Vehicles',
+            tabClothing: '👕 Clothing',
+            buyBtn: 'Buy Now',
+            termsTitle: '⚖️ Terms & Conditions',
+            termsText: 'All payments made to Pulse | Design & Market are final and non-refundable. The company reserves all rights over its services and products. Pulse | Design & Market cannot be held legally liable for any claims, damages, or losses related to the use of its products or services. By placing an order, the client fully agrees to these terms and conditions.',
+            discordText: '💬 Join our Discord for support & product delivery:',
+            discordBtn: 'Join Discord Server',
+            contact: '📧 Contact:',
+            copyright: '© 2026 Pulse | Design & Market. All rights reserved.'
+        }
+    };
+
+    const products = [
+        // MLO Products
         {
             id: 1,
-            name: 'Web Design',
-            description: 'Професионален дизайн на уебсайт с модерен и отзивчив изглед',
-            price: 299.99,
-            icon: '🎨'
+            category: 'mlo',
+            name: {
+                bg: 'Стандартно MLO Преправяне',
+                en: 'Standard MLO Remake'
+            },
+            description: {
+                bg: 'Пълно преправяне на съществуващо MLO',
+                en: 'Complete remake of existing MLO'
+            },
+            features: {
+                bg: [
+                    'Външни текстури',
+                    'Вътрешен дизайн',
+                    'MLO от купувача'
+                ],
+                en: [
+                    'External textures',
+                    'Interior design',
+                    'MLO from buyer'
+                ]
+            },
+            price: 4.49,
+            icon: '🏢',
+            payhipLink: ''
         },
         {
             id: 2,
-            name: 'SEO Оптимизация',
-            description: 'Пълна SEO оптимизация за по-добро класиране в търсачките',
-            price: 199.99,
-            icon: '📈'
+            category: 'mlo',
+            name: {
+                bg: 'Пълен MLO Пакет',
+                en: 'Full MLO Package'
+            },
+            description: {
+                bg: 'Комплексно MLO решение с 3D дизайн',
+                en: 'Complete MLO solution with 3D design'
+            },
+            features: {
+                bg: [
+                    'Външни текстури',
+                    'Вътрешен дизайн',
+                    'MLO намерено от нас',
+                    '3D дизайн на обект'
+                ],
+                en: [
+                    'External textures',
+                    'Interior design',
+                    'MLO found by us',
+                    '3D object design'
+                ]
+            },
+            price: 7.49,
+            icon: '🏗️',
+            payhipLink: ''
         },
         {
             id: 3,
-            name: 'Поддръжка на сайт',
-            description: 'Месечна поддръжка, обновления и техническа поддръжка',
-            price: 99.99,
-            icon: '🔧'
+            category: 'mlo',
+            name: {
+                bg: 'Пакет Superb',
+                en: 'Superb Package'
+            },
+            description: {
+                bg: '3 MLO-та от "Пълен MLO пакет"',
+                en: '3 MLOs from "Full MLO Package"'
+            },
+            features: {
+                bg: [
+                    '3x Пълен MLO Пакет',
+                    '10% отстъпка',
+                    'Най-добрата стойност'
+                ],
+                en: [
+                    '3x Full MLO Package',
+                    '10% discount',
+                    'Best value'
+                ]
+            },
+            price: 19.99,
+            oldPrice: 22.47,
+            badge: '10% OFF',
+            icon: '⭐',
+            payhipLink: ''
         },
         {
             id: 4,
-            name: 'E-commerce решение',
-            description: 'Пълнофункционален онлайн магазин с плащания',
-            price: 499.99,
-            icon: '🛒'
+            category: 'vehicles',
+            name: {
+                bg: 'Стандартно Ливери',
+                en: 'Standard Livery'
+            },
+            description: {
+                bg: 'Професионално ливери за автомобил',
+                en: 'Professional vehicle livery'
+            },
+            features: {
+                bg: [
+                    'Всякакъв тип автомобил',
+                    'Без буркани',
+                    'Custom дизайн'
+                ],
+                en: [
+                    'Any vehicle type',
+                    'No lights',
+                    'Custom design'
+                ]
+            },
+            price: 2.49,
+            icon: '🚗',
+            payhipLink: ''
         },
         {
             id: 5,
-            name: 'Мобилно приложение',
-            description: 'Разработка на мобилно приложение за Android и iOS',
-            price: 799.99,
-            icon: '📱'
+            category: 'vehicles',
+            name: {
+                bg: 'Пакет Extra',
+                en: 'Extra Package'
+            },
+            description: {
+                bg: 'За патрулки, линейки, пожарни',
+                en: 'For police, ambulance, fire trucks'
+            },
+            features: {
+                bg: [
+                    'Къстъм ливери',
+                    'Non-ELS буркани',
+                    'Къстъм handling'
+                ],
+                en: [
+                    'Custom livery',
+                    'Non-ELS lights',
+                    'Custom handling'
+                ]
+            },
+            price: 3.99,
+            icon: '🚓',
+            payhipLink: ''
         },
         {
             id: 6,
-            name: 'Дигитален Маркетинг',
-            description: 'Пълна дигитална маркетинг стратегия и управление',
-            price: 349.99,
-            icon: '📊'
+            category: 'vehicles',
+            name: {
+                bg: 'Пакет Full',
+                en: 'Full Package'
+            },
+            description: {
+                bg: '5-10 автомобила с пакет Extra',
+                en: '5-10 vehicles with Extra package'
+            },
+            features: {
+                bg: [
+                    '5-10 автомобила',
+                    'Пакет Extra за всеки',
+                    '30% отстъпка'
+                ],
+                en: [
+                    '5-10 vehicles',
+                    'Extra package for each',
+                    '30% discount'
+                ]
+            },
+            price: 15.99,
+            priceRange: '15.99 - 25.99',
+            badge: '30% OFF',
+            icon: '🚗',
+            payhipLink: ''
+        },
+        {
+            id: 7,
+            category: 'clothing',
+            name: {
+                bg: 'Стандартна Дреха (Ваш Template)',
+                en: 'Standard Clothing (Your Template)'
+            },
+            description: {
+                bg: 'Дреха по ваш избор',
+                en: 'Clothing of your choice'
+            },
+            features: {
+                bg: [
+                    'Template от купувача',
+                    'Custom дизайн',
+                    'Бърза доставка'
+                ],
+                en: [
+                    'Template from buyer',
+                    'Custom design',
+                    'Fast delivery'
+                ]
+            },
+            price: 0.99,
+            icon: '👔',
+            payhipLink: ''
+        },
+        {
+            id: 8,
+            category: 'clothing',
+            name: {
+                bg: 'Стандартна Дреха (Наш Template)',
+                en: 'Standard Clothing (Our Template)'
+            },
+            description: {
+                bg: 'Дреха с template от нас',
+                en: 'Clothing with our template'
+            },
+            features: {
+                bg: [
+                    'Template от продавача',
+                    'По-голям избор',
+                    'Custom дизайн'
+                ],
+                en: [
+                    'Template from seller',
+                    'More options',
+                    'Custom design'
+                ]
+            },
+            price: 1.99,
+            icon: '👕',
+            payhipLink: ''
+        },
+        {
+            id: 9,
+            category: 'clothing',
+            name: {
+                bg: 'Пакет Server',
+                en: 'Server Package'
+            },
+            description: {
+                bg: '10-15 дрехи за вашия сървър',
+                en: '10-15 clothing items for your server'
+            },
+            features: {
+                bg: [
+                    '10-15 дрехи',
+                    'Разнообразие',
+                    'Най-добра цена'
+                ],
+                en: [
+                    '10-15 items',
+                    'Variety',
+                    'Best price'
+                ]
+            },
+            price: 23.99,
+            badge: 'BEST VALUE',
+            icon: '👗',
+            payhipLink: ''
         }
     ];
 
-    let cart = [];
-    let currentSection = 'home';
+    let currentCategory = 'all';
 
     function renderProducts() {
         const container = document.getElementById('productsGrid');
-        container.innerHTML = services.map(service => `
+        const filtered = currentCategory === 'all' 
+            ? products 
+            : products.filter(p => p.category === currentCategory);
+
+        const lang = currentLanguage;
+
+        container.innerHTML = filtered.map(product => `
             <div class="product-card">
-                <div class="product-icon">${service.icon}</div>
-                <h3>${service.name}</h3>
-                <p>${service.description}</p>
-                <div class="price">$${service.price.toFixed(2)}</div>
-                <button class="btn" onclick="addToCart(${service.id})">Добави в количка</button>
+                ${product.badge ? `<div class="badge">${product.badge}</div>` : ''}
+                <div class="product-icon">${product.icon}</div>
+                <h3>${product.name[lang]}</h3>
+                <p>${product.description[lang]}</p>
+                ${product.features ? `
+                    <ul>
+                        ${product.features[lang].map(f => `<li>${f}</li>`).join('')}
+                    </ul>
+                ` : ''}
+                <div class="price">
+                    €${product.priceRange || product.price.toFixed(2)}
+                    ${product.oldPrice ? `<span class="price-old">€${product.oldPrice.toFixed(2)}</span>` : ''}
+                </div>
+                <button class="btn" onclick="buyProduct(${product.price}, '${product.name[lang]}')">${translations[lang].buyBtn}</button>
             </div>
         `).join('');
     }
 
-    function addToCart(id) {
-        const service = services.find(s => s.id === id);
-        const existing = cart.find(item => item.id === id);
+    function toggleLanguage() {
+        currentLanguage = currentLanguage === 'bg' ? 'en' : 'bg';
         
-        if (existing) {
-            existing.quantity++;
-        } else {
-            cart.push({...service, quantity: 1});
-        }
+        // Update button
+        document.getElementById('langIcon').textContent = currentLanguage === 'bg' ? '🇬🇧' : '🇧🇬';
+        document.getElementById('langText').textContent = currentLanguage === 'bg' ? 'EN' : 'BG';
         
-        updateCart();
+        // Update all text content
+        updatePageContent();
+        renderProducts();
     }
 
-    function removeFromCart(id) {
-        cart = cart.filter(item => item.id !== id);
-        updateCart();
+    function updatePageContent() {
+        const t = translations[currentLanguage];
+        
+        // Update menu
+        const menuItems = document.querySelectorAll('.sidebar ul li a');
+        menuItems[0].innerHTML = t.menuHome;
+        menuItems[1].innerHTML = t.menuAbout;
+        menuItems[2].innerHTML = t.menuProducts;
+        menuItems[3].innerHTML = t.menuContact;
+        
+        // Update hero section
+        document.querySelector('.hero h1').textContent = t.heroTitle;
+        document.querySelector('.hero p').textContent = t.heroDesc;
+        document.querySelector('.cta-button').textContent = t.heroBtn;
+        
+        // Update about section
+        document.querySelectorAll('.section-title')[0].textContent = t.aboutTitle;
+        document.querySelector('.about-text h3').textContent = t.aboutWho;
+        const aboutPs = document.querySelectorAll('.about-text p');
+        aboutPs[0].textContent = t.aboutDesc1;
+        aboutPs[1].textContent = t.aboutDesc2;
+        aboutPs[2].innerHTML = `<strong>${t.aboutWhy}</strong>`;
+        aboutPs[3].innerHTML = `✓ ${t.aboutPoint1}<br>
+               ✓ ${t.aboutPoint2}<br>
+               ✓ ${t.aboutPoint3}<br>
+               ✓ ${t.aboutPoint4}<br>
+               ✓ ${t.aboutPoint5}`;
+        
+        // Update products section
+        document.querySelectorAll('.section-title')[1].textContent = t.productsTitle;
+        
+        // Update tabs
+        const tabs = document.querySelectorAll('.tab-btn');
+        tabs[0].textContent = t.tabAll;
+        tabs[1].textContent = t.tabMLO;
+        tabs[2].textContent = t.tabVehicles;
+        tabs[3].textContent = t.tabClothing;
+        
+        // Update footer
+        document.querySelector('.terms-box h3').textContent = t.termsTitle;
+        document.querySelector('.terms-box p').textContent = t.termsText;
+        document.querySelector('footer p:nth-child(2)').innerHTML = t.discordText;
+        document.querySelector('footer a[href*="discord"]').innerHTML = `<span style="font-size: 20px; margin-right: 8px;">💬</span> ${t.discordBtn}`;
+        document.querySelector('footer p:nth-child(4)').innerHTML = `${t.contact} <a href="mailto:pulsedesignsbg@gmail.com" style="color: #667eea; text-decoration: none;">pulsedesignsbg@gmail.com</a>`;
+        document.querySelector('footer p:last-child').textContent = t.copyright;
     }
 
-    function updateCart() {
-        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-        document.getElementById('cartCount').textContent = count;
-        renderCart();
+    function filterCategory(category) {
+        currentCategory = category;
+        
+        // Update active tab
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        renderProducts();
     }
 
-    function renderCart() {
-        const container = document.getElementById('cartItems');
+    function buyProduct(price, productName) {
+        const t = translations[currentLanguage];
         
-        if (cart.length === 0) {
-            container.innerHTML = `
-                <div class="empty-cart">
-                    <div class="empty-cart-icon">🛒</div>
-                    <p>Количката е празна</p>
-                </div>
-            `;
-            return;
-        }
-
-        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        // Показване на Terms преди покупка
+        const agreed = confirm(
+            '⚖️ TERMS & CONDITIONS\n\n' +
+            'All payments made to Pulse | Design & Market are final and non-refundable. ' +
+            'The company reserves all rights over its services and products. ' +
+            'By clicking OK, you fully agree to these terms.\n\n' +
+            'Product: ' + productName + '\n' +
+            'Price: €' + price + '\n\n' +
+            (currentLanguage === 'bg' 
+                ? 'Ще бъдете пренасочени към PayPal. След плащане, присъединете се към Discord за доставка на продукта.'
+                : 'You will be redirected to PayPal. After payment, join our Discord for product delivery.')
+        );
         
-        container.innerHTML = `
-            ${cart.map(item => `
-                <div class="cart-item">
-                    <div class="cart-item-info">
-                        <h4>${item.icon} ${item.name}</h4>
-                        <p>Количество: ${item.quantity}</p>
-                        <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
-                    </div>
-                    <button class="remove-btn" onclick="removeFromCart(${item.id})">✕</button>
-                </div>
-            `).join('')}
+        if (!agreed) return;
+        
+        // PayPal URL
+        const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=pulsedesignsbg@gmail.com&item_name=${encodeURIComponent(productName)}&amount=${price}&currency_code=EUR&return=https://pulsedesigns.vercel.app&cancel_return=https://pulsedesigns.vercel.app`;
+        
+        // Отваря PayPal
+        window.open(paypalUrl, '_blank');
+        
+        // Показва Discord инструкции след 2 секунди
+        setTimeout(() => {
+            const joinDiscord = confirm(
+                (currentLanguage === 'bg' 
+                    ? '✅ СЛЕДВАЩИ СТЪПКИ:\n\n1. Завършете плащането в PayPal\n2. Присъединете се към нашия Discord сървър\n3. Свържете се с нас с потвърждение за плащане\n4. Получете вашия продукт!\n\nDiscord: https://discord.gg/wsru7jEr7F\n\nИскате ли да отворите Discord сега?'
+                    : '✅ NEXT STEPS:\n\n1. Complete the payment in PayPal\n2. Join our Discord server\n3. Contact us with payment confirmation\n4. Receive your product!\n\nDiscord: https://discord.gg/wsru7jEr7F\n\nWould you like to open Discord now?')
+            );
             
-            <div class="cart-total">
-                <h3>Общо: $${total.toFixed(2)}</h3>
-            </div>
-            
-            <div class="cart-actions">
-                <button class="btn" style="background: rgba(255,255,255,0.1)" onclick="toggleCart()">Продължи</button>
-                <button class="btn" onclick="checkout()">Плащане с PayPal</button>
-            </div>
-        `;
-    }
-
-    function toggleCart() {
-        const modal = document.getElementById('cartModal');
-        modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+            if (joinDiscord) {
+                window.open('https://discord.gg/wsru7jEr7F', '_blank');
+            }
+        }, 2000);
     }
 
     function toggleMenu() {
@@ -777,51 +1091,16 @@
         }
         
         // Close menu
-        toggleMenu();
+        if (document.getElementById('sidebar').classList.contains('active')) {
+            toggleMenu();
+        }
         
         // Scroll to top
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-    function checkout() {
-        if (cart.length === 0) {
-            alert('Количката е празна!');
-            return;
-        }
-
-        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const items = cart.map(item => `${item.name} x${item.quantity}`).join(', ');
-        
-        // Показваме Terms преди checkout
-        const agreed = confirm(
-            '⚖️ TERMS & CONDITIONS\n\n' +
-            'All payments made to Pulse | Design & Market are final and non-refundable. ' +
-            'The company reserves all rights over its services and products. ' +
-            'By clicking OK, you fully agree to these terms and will be redirected to PayPal.\n\n' +
-            'Total: $' + total.toFixed(2) + '\n' +
-            'Items: ' + items
-        );
-        
-        if (!agreed) return;
-        
-        // PayPal URL с твоя имейл
-        const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=pulsedesignsbg@gmail.com&item_name=${encodeURIComponent(items)}&amount=${total.toFixed(2)}&currency_code=USD&return=https://pulsedesigns.vercel.app&cancel_return=https://pulsedesigns.vercel.app`;
-        
-        window.open(paypalUrl, '_blank');
-        
-        // Показваме съобщение
-        alert('✅ Ще бъдете пренасочени към PayPal.\n\nСлед успешно плащане, ще получите потвърждение на имейл от PayPal.');
-    }
-
     // Initialize
     renderProducts();
-    
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-        });
-    });
 </script>
 ```
 
